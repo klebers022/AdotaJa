@@ -10,6 +10,7 @@ import PetsScreen from './screens/PetsScreen';
 import CadastroScreen from './screens/CadastroScreen';
 import ContatoScreen from './screens/ContatoScreen';
 import ParticipantesScreen from './screens/ParticipantesScreen';
+import Header from './components/header';
 
 
 const Tab = createBottomTabNavigator();
@@ -18,14 +19,7 @@ export default function App() {
   return (
     <View style={{ flex: 1 }}>
      
-      <View style={styles.header}>
-        <Image
-          source={require('./assets/icon.png')}
-          style={styles.logo}
-        />
-      </View>
-  
-    
+      <Header/>
       <View style={{ flex: 1 }}>
         <NavigationContainer>
           <Tab.Navigator
