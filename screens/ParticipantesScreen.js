@@ -6,18 +6,21 @@ export default function ParticipantesScreen() {
   const participantes = [
     {
       nome: "Kleber da Silva",
+      img: require("../assets/kleber.png"),
       rm: "RM: 557887",
       github: "https://github.com/klebers022",
       linkedin: "https://linkedin.com/in/kleber-silva"
     },
     {
       nome: "Lucas Rainha",
+      img: require("../assets/lucas.png"),
       rm: "RM: 558471",
       github: "https://github.com/lucasrainha",
       linkedin: "https://linkedin.com/in/lucasrainha"
     },
     {
       nome: "Nicolas Barutti",
+      img: require("../assets/nicolas.jpg"),
       rm: "RM: 558471",
       github: "https://github.com/nicolasbarutti",
       linkedin: "https://linkedin.com/in/nicolasbarutti"
@@ -29,7 +32,7 @@ export default function ParticipantesScreen() {
       {participantes.map((p, index) => (
         <View key={index} style={styles.card}>
           <Image
-            source={require("../assets/cachorro.png")}
+            source={p.img}
             style={styles.image}
           />
           <View style={styles.info}>
