@@ -29,7 +29,7 @@ export default function HomeScreen() {
       </Text>
 
       
-      <TouchableOpacity style={styles.buttonContainer}>
+      <TouchableOpacity style={styles.buttonContainer} >
         <Image
           source={require('../assets/cachorro.png')} 
           style={styles.dogImage}
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 100,
     resizeMode: "contain",
-    marginBottom: -20,
+    marginBottom: -36,
     zIndex: 1,
   },
   button: {
