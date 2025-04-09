@@ -10,7 +10,7 @@ export default function PetsScreen() {
 
   const buscarPets = async () => {
     try {
-      const response = await axios.get("http://192.168.10.2125000/pets");
+      const response = await axios.get("coloque seu IP local");
       setPets(response.data.data);
 
       console.log(response.data);
