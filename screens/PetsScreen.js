@@ -10,8 +10,10 @@ export default function PetsScreen() {
 
   const buscarPets = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5000/pets');
-      setPets(response.data);
+      const response = await axios.get("http://192.168.1.128:5000/pets");
+      setPets(response.data.data);
+
+      console.log(response.data);
     } catch (error) {
       console.error('Erro ao buscar pets:', error);
     }
@@ -38,6 +40,7 @@ export default function PetsScreen() {
           placeholder="Buscar pets..."
           value={busca}
           onChangeText={setBusca}
+          onSubmitEditing={buscarPets}
         />
         <Ionicons name="options-outline" size={24} color="#6A5ACD" />
       </View>
@@ -53,24 +56,23 @@ export default function PetsScreen() {
           </TouchableOpacity>
         ))}
       </View>
-
       <FlatList
         data={filtrarPets()}
         keyExtractor={item => item.id.toString()}
         renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Image source={{ uri: item.imagem }} style={styles.imagem} />
-            <View style={styles.info}>
-              <Text style={styles.nome}>{item.nome}</Text>
-              <Text style={styles.detalhes}>{item.idade} - {item.porte}</Text>
-              <Text style={styles.localizacao}>📍 {item.localizacao}</Text>
-              <TouchableOpacity style={styles.botaoAdotar}>
-                <Text style={styles.textoBotao}>Adote já</Text>
-              </TouchableOpacity>
-            </View>
+        <View style={styles.card}>
+          <Image source={{ uri: item.imagem }} style={styles.imagem} />
+          <View style={styles.info}>
+            <Text style={styles.nome}>{item.nome}</Text>
+            <Text style={styles.detalhes}>{item.idade} - {item.porte}</Text>
+            <Text style={styles.localizacao}>📍 {item.localizacao}</Text>
+            <TouchableOpacity style={styles.botaoAdotar}>
+              <Text style={styles.textoBotao}>Adote já</Text>
+            </TouchableOpacity>
           </View>
-        )}
-      />
+        </View>
+  )}
+/>
     </View>
   );
 }
