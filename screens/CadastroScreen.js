@@ -29,7 +29,7 @@ export default function CadastroScreen() {
 
   const cadastrarPet = async () => {
     try {
-      await axios.post("http://192.168.1.128:5000/pets", pet);
+      await axios.post("http://10.3.73.9:5000/pets", pet);
       alert('Pet cadastrado com sucesso!');
     } catch (error) {
       console.error(error);

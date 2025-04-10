@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
-import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { FlatList, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function PetsScreen() {
   const [pets, setPets] = useState([]);
@@ -10,7 +10,7 @@ export default function PetsScreen() {
 
   const buscarPets = async () => {
     try {
-      const response = await axios.get("coloque seu IP local");
+      const response = await axios.get("http://10.3.73.9:5000/pets");
       setPets(response.data.data);
 
       console.log(response.data);
@@ -60,19 +60,19 @@ export default function PetsScreen() {
         data={filtrarPets()}
         keyExtractor={item => item.id.toString()}
         renderItem={({ item }) => (
-        <View style={styles.card}>
-          <Image source={{ uri: item.imagem }} style={styles.imagem} />
-          <View style={styles.info}>
-            <Text style={styles.nome}>{item.nome}</Text>
-            <Text style={styles.detalhes}>{item.idade} - {item.porte}</Text>
-            <Text style={styles.localizacao}>📍 {item.localizacao}</Text>
-            <TouchableOpacity style={styles.botaoAdotar}>
-              <Text style={styles.textoBotao}>Adote já</Text>
-            </TouchableOpacity>
+          <View style={styles.card}>
+            <Image source={{ uri: item.imagem }} style={styles.imagem} />
+            <View style={styles.info}>
+              <Text style={styles.nome}>{item.nome}</Text>
+              <Text style={styles.detalhes}>{item.idade} - {item.porte}</Text>
+              <Text style={styles.localizacao}>📍 {item.localizacao}</Text>
+              <TouchableOpacity style={styles.botaoAdotar}>
+                <Text style={styles.textoBotao}>Adote já</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-  )}
-/>
+        )}
+      />
     </View>
   );
 }
