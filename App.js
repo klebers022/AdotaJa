@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import createNativeStackNavigator from "@react-navigation/native-stack"
+
 import { NavigationContainer } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -12,10 +15,11 @@ import ContatoScreen from './screens/ContatoScreen';
 import ParticipantesScreen from './screens/ParticipantesScreen';
 import Header from './components/header';
 
-
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
+    
   return (
     <View style={{ flex: 1 }}>
      

@@ -1,7 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
 
+
 export default function HomeScreen() {
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Bem-vindo ao AdotaJá!</Text>

@@ -8,28 +8,30 @@ export default function CadastroScreen() {
     nome: '',
     idade: '',
     porte: '',
-    tipo: 'Cachorro',
+    tipo: '',
     localizacao: '',
     descricao: '',
-    imagem: ''
+    imagem: pet
   });
 
   const escolherImagem = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      mediaTypes: ["images"],
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
     });
 
+    console.log(result)
     if (!result.cancelled) {
-      setPet({ ...pet, imagem: result.uri });
+    
+      setPet({ ...pet, imagem: result.assets[0].uri });
     }
   };
 
   const cadastrarPet = async () => {
     try {
-      await axios.post("http://10.3.73.9:5000/pets", pet);
+      await axios.post("http://192.168.1.128:5000/pets", pet);
       alert('Pet cadastrado com sucesso!');
     } catch (error) {
       console.error(error);
@@ -38,8 +40,11 @@ export default function CadastroScreen() {
   };
 
   return (
+
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.titulo}>Cadastre seu Pet</Text>
+
+      {/* Preview */}
       <TouchableOpacity style={styles.uploadBox} onPress={escolherImagem}>
         {pet.imagem ? (
           <Image source={{ uri: pet.imagem }} style={styles.imagem} />
@@ -48,6 +53,7 @@ export default function CadastroScreen() {
         )}
       </TouchableOpacity>
 
+      {/* Form */}
       <Text style={styles.label}>Nome do Pet</Text>
       <TextInput style={styles.input} placeholder="Ex: Luna" value={pet.nome} onChangeText={text => setPet({ ...pet, nome: text })} />
 
@@ -58,7 +64,7 @@ export default function CadastroScreen() {
         </View>
         <View style={styles.metade}>
           <Text style={styles.label}>Porte</Text>
-          <TextInput style={styles.input} placeholder="Ex: pequeno" value={pet.porte} onChangeText={text => setPet({ ...pet, porte: text })} />
+          <TextInput style={styles.input} placeholder="Ex: Pequeno" value={pet.porte} onChangeText={text => setPet({ ...pet, porte: text })} />
         </View>
       </View>
 
@@ -69,7 +75,7 @@ export default function CadastroScreen() {
         </View>
         <View style={styles.metade}>
           <Text style={styles.label}>Tipo</Text>
-          <TextInput style={styles.input} value={pet.tipo} onChangeText={text => setPet({ ...pet, tipo: text })} />
+          <TextInput style={styles.input} value={pet.tipo} placeholder='Cachorro/Gato' onChangeText={text => setPet({ ...pet, tipo: text })} />
         </View>
       </View>
 
