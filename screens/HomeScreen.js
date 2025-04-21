@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
 
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
 
   return (
     <ScrollView style={styles.container}>
@@ -31,9 +31,12 @@ export default function HomeScreen() {
       </Text>
 
       
-      <TouchableOpacity style={styles.buttonContainer} >
+      <TouchableOpacity
+        style={styles.buttonContainer}
+        onPress={() => navigation.navigate("Drawer")} // Navega para o Drawer Navigator
+      >
         <Image
-          source={require('../assets/cachorro.png')} 
+          source={require("../assets/cachorro.png")}
           style={styles.dogImage}
         />
         <View style={styles.button}>

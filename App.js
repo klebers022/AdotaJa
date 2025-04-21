@@ -13,6 +13,7 @@ import CadastroScreen from './screens/CadastroScreen';
 import ContatoScreen from './screens/ContatoScreen';
 import ParticipantesScreen from './screens/ParticipantesScreen';
 import Header from './components/header';
+import DrawerNavigator from './navigation/DrawerNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -47,6 +48,7 @@ export default function App() {
             <Tab.Screen name="Cadastro" component={CadastroScreen} />
             <Tab.Screen name="Contato" component={ContatoScreen} />
             <Tab.Screen name="Participantes" component={ParticipantesScreen} />
+            <Tab.Screen name="Drawer" component={DrawerNavigator} options={{ tabBarButton: () => null }} />
           </Tab.Navigator>
         </NavigationContainer>
       </View>
